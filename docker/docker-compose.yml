@@ -13,5 +13,23 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  api:
+    build:
+      context: ..
+      dockerfile: src/Rental.Api/Dockerfile
+    container_name: rental_api
+    depends_on:
+      - postgres
+    environment:
+      # API escuta 8080 dentro do container
+      ASPNETCORE_URLS: http://+:8080
+      # override da connection string para dentro do Docker
+      ConnectionStrings__Default: Host=postgres;Port=5432;Database=mottu;Username=postgres;Password=postgres
+    ports:
+      - "5000:8080"
+    # se você for salvar imagens localmente, mapeie wwwroot:
+    # volumes:
+    #   - ../src/Rental.Api/wwwroot:/app/wwwroot
+
 volumes:
   postgres_data:

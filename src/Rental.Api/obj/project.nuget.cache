@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dwTKjADbedg=",
+  "dgSpecHash": "Oindry9Epr4=",
   "success": true,
-  "projectFilePath": "D:\\Developing\\desafios\\Mottu\\src\\Rental.Api\\Rental.Api.csproj",
+  "projectFilePath": "D:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\joaoh\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\joaoh\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

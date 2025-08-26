@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CKJnHWyEdO4=",
+  "dgSpecHash": "wStsS2TpbN4=",
   "success": true,
-  "projectFilePath": "D:\\Developing\\desafios\\Mottu\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj",
+  "projectFilePath": "D:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\joaoh\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\joaoh\\.nuget\\packages\\fluentassertions\\6.12.0\\fluentassertions.6.12.0.nupkg.sha512",

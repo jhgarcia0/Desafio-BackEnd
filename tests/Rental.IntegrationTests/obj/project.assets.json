@@ -8268,11 +8268,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Developing\\desafios\\Mottu\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj",
+      "projectUniqueName": "D:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj",
       "projectName": "Rental.IntegrationTests",
-      "projectPath": "D:\\Developing\\desafios\\Mottu\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj",
+      "projectPath": "D:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj",
       "packagesPath": "C:\\Users\\joaoh\\.nuget\\packages\\",
-      "outputPath": "D:\\Developing\\desafios\\Mottu\\tests\\Rental.IntegrationTests\\obj\\",
+      "outputPath": "D:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\joaoh\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -8287,8 +8287,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Developing\\desafios\\Mottu\\src\\Rental.Api\\Rental.Api.csproj": {
-              "projectPath": "D:\\Developing\\desafios\\Mottu\\src\\Rental.Api\\Rental.Api.csproj"
+            "D:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj": {
+              "projectPath": "D:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj"
             }
           }
         }

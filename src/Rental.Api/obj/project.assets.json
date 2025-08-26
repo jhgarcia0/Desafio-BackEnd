@@ -2743,11 +2743,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Developing\\desafios\\Mottu\\src\\Rental.Api\\Rental.Api.csproj",
+      "projectUniqueName": "D:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj",
       "projectName": "Rental.Api",
-      "projectPath": "D:\\Developing\\desafios\\Mottu\\src\\Rental.Api\\Rental.Api.csproj",
+      "projectPath": "D:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj",
       "packagesPath": "C:\\Users\\joaoh\\.nuget\\packages\\",
-      "outputPath": "D:\\Developing\\desafios\\Mottu\\src\\Rental.Api\\obj\\",
+      "outputPath": "D:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\joaoh\\AppData\\Roaming\\NuGet\\NuGet.Config"
