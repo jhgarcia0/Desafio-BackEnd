@@ -14,6 +14,7 @@ builder.Services.AddDbContext<RentalDbContext>(opt =>
 });
 
 var app = builder.Build();
+app.UseDeveloperExceptionPage();
 
 using (var scope = app.Services.CreateScope())
 {
@@ -26,6 +27,7 @@ app.UseSwaggerUI();
 
 
 app.UseHttpsRedirection();
+
 app.MapControllers();
 
 

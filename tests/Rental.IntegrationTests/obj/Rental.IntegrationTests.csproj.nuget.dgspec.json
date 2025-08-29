@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj": {}
+    "d:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj": {}
   },
   "projects": {
-    "D:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj": {
+    "d:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj",
+        "projectUniqueName": "d:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj",
         "projectName": "Rental.Api",
-        "projectPath": "D:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj",
+        "projectPath": "d:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj",
         "packagesPath": "C:\\Users\\joaoh\\.nuget\\packages\\",
-        "outputPath": "D:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\obj\\",
+        "outputPath": "d:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\joaoh\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\joaoh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -91,17 +95,21 @@
         }
       }
     },
-    "D:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj": {
+    "d:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj",
+        "projectUniqueName": "d:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj",
         "projectName": "Rental.IntegrationTests",
-        "projectPath": "D:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj",
+        "projectPath": "d:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\Rental.IntegrationTests.csproj",
         "packagesPath": "C:\\Users\\joaoh\\.nuget\\packages\\",
-        "outputPath": "D:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\obj\\",
+        "outputPath": "d:\\Developing\\desafios\\Desafio-BackEnd\\tests\\Rental.IntegrationTests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\joaoh\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\joaoh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -113,8 +121,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj": {
-                "projectPath": "D:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj"
+              "d:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj": {
+                "projectPath": "d:\\Developing\\desafios\\Desafio-BackEnd\\src\\Rental.Api\\Rental.Api.csproj"
               }
             }
           }

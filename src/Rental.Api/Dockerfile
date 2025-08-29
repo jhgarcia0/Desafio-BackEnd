@@ -1,15 +1,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-
 COPY src/Rental.Api/Rental.Api.csproj src/Rental.Api/
 RUN dotnet restore src/Rental.Api/Rental.Api.csproj
+COPY src/Rental.Api/ src/Rental.Api/
+RUN dotnet publish src/Rental.Api/Rental.Api.csproj -c Release -o /app/publish
 
-COPY . .
-RUN dotnet publish src/Rental.Api/Rental.Api.csproj -c Release -o /app/publish /p:UseAppHost=false
-
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/publish .
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
-ENTRYPOINT ["dotnet", "Rental.Api.dll"]
+ENTRYPOINT ["dotnet","Rental.Api.dll"]

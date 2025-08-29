@@ -15,3 +15,10 @@ A minha escolha de arquitetura foi guiada pelas minha experências passadas, ten
 
 Escolhi Postgress sem motivo, só ouvi falar melhor (normalmente escolho mysql).
 
+Para os testes, como na época que eu trabalhava não tinha IA, eu tentei utilizar dessa vez para conseguir fazer de forma rápida, como o tempo é curto, não me preocupei em aprender essa parte, mas gostei MUITO da forma como os testes se comportam, para testar é intuitivo, rápido e simples.
+
+## Considerações e dificuldades.
+
+Como eu não conhecia .NET e vi muito pouco de C#, tudo foi muito novo, stackoverflow, google e IA foram meus amigos nesse projeto. Normalmente eu evito o máximo possivel ChatGPT, o único lugar ai que eu realmente usaria "na vida real" é nos testes e em casos extremos, que ninguém da equipe sabe a resposta.
+Como eu tive 3 provas essa semana, acabou que meu tempo encurtou para 5 dias, por volta do "quarto dia útil" eu fui fazer o envio da CNH e simplesmente não funcionava, fiquei o dia inteiro nisso, mas no final tive que apelar pra IA, repito, não faria isso normalmente, num caso real eu teria o time pra pedir ajuda, tempo pra estudar e mais experiência, mas numa situação de teste como essa, meu tempo ficou curto e o desespero bateu.
+Sobre os diferenciais, comecei tentando atender à todos, no final, consegui poucos.

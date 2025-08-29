@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
 
 namespace Rental.IntegrationTests;
-
+[Collection("NoParallel")]
 public class MotoTests : IAsyncLifetime
 {
     public async Task InitializeAsync()
@@ -89,7 +89,6 @@ public class MotoTests : IAsyncLifetime
         await using var app = new WebApplicationFactory<Program>();
         var client = app.CreateClient();
 
-        // cria primeiro para obter o id
         var create = await client.PostAsJsonAsync("/motos", new {
             identifier = "GET1", year = 2024, model = "CG", plate = "GET1A11"
         });
@@ -97,7 +96,6 @@ public class MotoTests : IAsyncLifetime
         var created = await create.Content.ReadFromJsonAsync<Dictionary<string, object>>();
         var id = created!["id"].ToString();
 
-        // GET /motos/{id}
         var resp = await client.GetAsync($"/motos/{id}");
         resp.StatusCode.Should().Be(HttpStatusCode.OK);
 
@@ -116,6 +114,56 @@ public class MotoTests : IAsyncLifetime
         var randomId = Guid.NewGuid();
         var resp = await client.GetAsync($"/motos/{randomId}");
         resp.StatusCode.Should().Be(HttpStatusCode.NotFound);
+    }
+    [Fact]
+    public async Task Put_Moto_Update_Plate_Should_Work()
+    {
+        await using var app = new WebApplicationFactory<Program>();
+        var client = app.CreateClient();
+
+        var create = await client.PostAsJsonAsync("/motos", new { identifier="UP1", year=2024, model="CG", plate="UP1A11" });
+        create.StatusCode.Should().Be(HttpStatusCode.Created);
+        var moto = await create.Content.ReadFromJsonAsync<Dictionary<string, object>>();
+        var id = moto!["id"].ToString();
+
+        var put = await client.PutAsJsonAsync($"/motos/{id}/placa", new { plate = "UP9Z99" });
+        put.StatusCode.Should().Be(HttpStatusCode.OK);
+
+        var updated = await put.Content.ReadFromJsonAsync<Dictionary<string, object>>();
+        updated!["plate"].ToString().Should().Be("UP9Z99");
+    }
+
+    [Fact]
+    public async Task Put_Moto_Update_Plate_Should_Return_Conflict_When_Duplicate()
+    {
+        await using var app = new WebApplicationFactory<Program>();
+        var client = app.CreateClient();
+
+        var a = await client.PostAsJsonAsync("/motos", new { identifier="A", year=2024, model="CG", plate="DUP1A11" });
+        var b = await client.PostAsJsonAsync("/motos", new { identifier="B", year=2024, model="CG", plate="DUP2B22" });
+        a.StatusCode.Should().Be(HttpStatusCode.Created);
+        b.StatusCode.Should().Be(HttpStatusCode.Created);
+
+        var motoB = await b.Content.ReadFromJsonAsync<Dictionary<string, object>>();
+        var idB = motoB!["id"].ToString();
+
+        var put = await client.PutAsJsonAsync($"/motos/{idB}/placa", new { plate = "DUP1A11" });
+        put.StatusCode.Should().Be(HttpStatusCode.Conflict);
+    }
+
+    [Fact]
+    public async Task Put_Moto_Update_Plate_Should_Return_BadRequest_When_Empty()
+    {
+        await using var app = new WebApplicationFactory<Program>();
+        var client = app.CreateClient();
+
+        var create = await client.PostAsJsonAsync("/motos", new { identifier="BAD", year=2024, model="CG", plate="BAD1A11" });
+        create.StatusCode.Should().Be(HttpStatusCode.Created);
+        var moto = await create.Content.ReadFromJsonAsync<Dictionary<string, object>>();
+        var id = moto!["id"].ToString();
+
+        var put = await client.PutAsJsonAsync($"/motos/{id}/placa", new { plate = "" });
+        put.StatusCode.Should().Be(HttpStatusCode.BadRequest);
     }
 
 

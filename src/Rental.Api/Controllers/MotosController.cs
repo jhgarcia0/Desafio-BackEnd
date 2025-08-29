@@ -78,4 +78,23 @@ public class MotosController : ControllerBase
 
         return NoContent();
     }
+    public record UpdatePlateRequest(string Plate);
+
+    [HttpPut("{id:guid}/placa")]
+    public async Task<IActionResult> UpdatePlate(Guid id, [FromBody] UpdatePlateRequest req, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(req.Plate))
+            return BadRequest(new { error = "Plate is required." });
+
+        var newPlate = req.Plate.Trim().ToUpperInvariant();
+        var moto = await _db.Motos.FirstOrDefaultAsync(m => m.Id == id, ct);
+        if (moto is null) return NotFound();
+        if (moto.Plate == newPlate) return Ok(moto);
+        var exists = await _db.Motos.AsNoTracking().AnyAsync(m => m.Plate == newPlate, ct);
+        if (exists) return Conflict(new { error = "Plate already exists." });
+        moto.Plate = newPlate;
+        await _db.SaveChangesAsync(ct);
+
+        return Ok(moto);
+    }
 }

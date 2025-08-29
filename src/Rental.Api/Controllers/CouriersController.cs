@@ -45,24 +45,71 @@ public class CouriersController : ControllerBase
         if (await _db.Couriers.AsNoTracking().AnyAsync(c => c.CnhNumber == cnhNumber, ct))
             return Conflict(new { error = "CnhNumber already exists." });
 
+        var birthUtc = req.BirthDate.Kind == DateTimeKind.Utc
+            ? req.BirthDate
+            : DateTime.SpecifyKind(req.BirthDate, DateTimeKind.Utc);
+
         var entity = new Courier
         {
             Identifier = req.Identifier.Trim(),
             Name = req.Name.Trim(),
             Cnpj = cnpj,
-            BirthDate = req.BirthDate,
+            BirthDate = birthUtc,
             CnhNumber = cnhNumber,
             CnhType = cnhType,
             CnhImagePath = string.IsNullOrWhiteSpace(req.CnhImagePath) ? null : req.CnhImagePath.Trim()
         };
 
-        _db.Couriers.Add(entity);
-        await _db.SaveChangesAsync(ct);
+        try
+        {
+            _db.Couriers.Add(entity);
+            await _db.SaveChangesAsync(ct);
+        }
+        catch (DbUpdateException ex) when (ex.InnerException?.Message.Contains("duplicate key") == true)
+        {
+            return Conflict(new { error = "Unique constraint violation." });
+        }
 
         return CreatedAtAction(nameof(GetById), new { id = entity.Id }, entity);
     }
 
+    [HttpPost("{id:guid}/cnh")]
+    [RequestSizeLimit(10_000_000)]
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> UploadCnh(Guid id, [FromForm] UploadCnhRequest req, CancellationToken ct)
+    {
+        var file = req.File;
+        if (file is null || file.Length == 0)
+            return BadRequest(new { error = "file is required" });
+
+        var allowed = new[] { "image/png", "image/bmp" };
+        if (!allowed.Contains(file.ContentType))
+            return BadRequest(new { error = "only PNG or BMP are allowed" });
+
+        var courier = await _db.Couriers.FindAsync([id], ct);
+        if (courier is null) return NotFound();
+
+        var ext = file.ContentType == "image/png" ? ".png" : ".bmp";
+        var baseDir = Path.Combine(AppContext.BaseDirectory, "storage", "cnh");
+        Directory.CreateDirectory(baseDir);
+
+        var fileName = $"{id}{ext}";
+        var fullPath = Path.Combine(baseDir, fileName);
+
+        await using (var stream = System.IO.File.Create(fullPath))
+            await file.CopyToAsync(stream, ct);
+
+        courier.CnhImagePath = fullPath;
+        await _db.SaveChangesAsync(ct);
+
+        var relative = fullPath.Replace(AppContext.BaseDirectory, "").TrimStart(Path.DirectorySeparatorChar);
+        return Ok(new { path = relative });
+    }
+
+
+
     [HttpGet("{id:guid}")]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public async Task<IActionResult> GetById(Guid id, CancellationToken ct)
     {
         var courier = await _db.Couriers.FindAsync([id], ct);
